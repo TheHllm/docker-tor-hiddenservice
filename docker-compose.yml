@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+services:
+  web:
+    build:
+      context: web
+      dockerfile: Dockerfile
+    networks:
+      - no-internet
+
+  onion:
+    build:
+      context: onion
+      dockerfile: Dockerfile
+    networks:
+      - internet
+      - no-internet
+
+networks:
+  no-internet:
+    driver: bridge
+    internal: true
+  
+  internet:
+    driver: bridge
+  
